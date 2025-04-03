@@ -1,15 +1,16 @@
 import os
 import requests
 
+
 def get_weather() -> None:
     api_key = os.getenv("API_KEY")
     city = "Paris"
 
     if not api_key:
-        print("❌ API_KEY is not set")
+        print("API_KEY is not set")
         return
 
-    url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}&units=metric"
+    url = "http://api.openweathermap.org/data/2.5/weather"
 
     try:
         response = requests.get(url)
@@ -22,7 +23,8 @@ def get_weather() -> None:
         print(f"Weather in {city}: {description}, {temperature}°C")
 
     except requests.RequestException as e:
-        print(f"❌ Request failed: {e}")
+        print(f"Request failed: {e}")
+
 
 if __name__ == "__main__":
     get_weather()
